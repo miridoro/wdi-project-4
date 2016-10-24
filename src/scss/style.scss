@@ -1,0 +1,16 @@
+@import "bower";
+
+ul {
+  li {
+    a {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+.navbar-default {
+  color: cornflowerblue;
+}
