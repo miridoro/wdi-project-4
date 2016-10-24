@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema({
   time:              { type: Date }, // required: true
   contentwysiwyg:    { type: String, trim: true},
   user:              { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-  // comments:   [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
+  comments:         [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 }, {
   timestamps: true
 });

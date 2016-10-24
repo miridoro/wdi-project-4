@@ -18,7 +18,7 @@ function usersEditCtrl(User, $stateParams, $state){
       .update($stateParams, { user: vm.user })
       .$promise
       .then(data => {
-        $state.go("usersShow", $stateParams);
+        $state.go("usersShowCtrl", $stateParams);
       });
   };
 }

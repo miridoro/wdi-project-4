@@ -50680,7 +50680,7 @@ if (typeof jQuery === 'undefined') {
 "use strict";angular.module("graphite").factory("Blog",blogFactory);blogFactory.$inject=["$resource","API"];function blogFactory($resource,API){return $resource(API+"/blogs/:id",{id:'@_id'},{'get':{method:'GET'},'save':{method:'POST'},'remove':{method:'DELETE'},'delete':{method:'DELETE'},'query':{method:'GET',isArray:false},'update':{method:'PUT'},'query_for_user':{method:'GET',url:API+"/my-blogs"}});}
 "use strict";angular.module("graphite").service("CurrentUserService",CurrentUserService);CurrentUserService.$inject=["$rootScope","TokenService"];function CurrentUserService($rootScope,TokenService){//will save the user to this service
 var currentUser=TokenService.decodeToken();return{user:currentUser,saveUser:function saveUser(user){currentUser=user;$rootScope.$broadcast("loggedIn");},getUser:function getUser(){return currentUser;},clearUser:function clearUser(){currentUser=null;TokenService.clearToken();$rootScope.$broadcast("loggedOut");}};}
-"use strict";angular.module("graphite").controller("usersEditCtrl",usersEditCtrl);usersEditCtrl.$inject=["User","$stateParams","$state"];function usersEditCtrl(User,$stateParams,$state){var vm=this;User.get($stateParams,function(data){vm.user=data.user;console.log("vm.user",vm.user);});vm.submit=function(){console.log("submit edit");User.update($stateParams,{user:vm.user}).$promise.then(function(data){$state.go("usersShow",$stateParams);});};}
+"use strict";angular.module("graphite").controller("usersEditCtrl",usersEditCtrl);usersEditCtrl.$inject=["User","$stateParams","$state"];function usersEditCtrl(User,$stateParams,$state){var vm=this;User.get($stateParams,function(data){vm.user=data.user;console.log("vm.user",vm.user);});vm.submit=function(){console.log("submit edit");User.update($stateParams,{user:vm.user}).$promise.then(function(data){$state.go("usersShowCtrl",$stateParams);});};}
 "use strict";angular.module("graphite").controller("PostEditCtrl",PostEditCtrl);PostEditCtrl.$inject=["Post","$stateParams","$state"];function PostEditCtrl(Post,$stateParams,$state){var vm=this;Post.get($stateParams,function(data){vm.post=data.post;});vm.submit=function(){console.log("vm.post",vm.post);Post.update($stateParams,{post:vm.post}).$promise.then(function(data){$state.go("postShow",$stateParams);});};}
 "use strict";angular.module("graphite").controller("homeCtrl",homeCtrl);homeCtrl.$inject=["$window","CurrentUserService"];function homeCtrl($window,CurrentUserService){setTimeout(function(){if(CurrentUserService.getUser()&&!$window.localStorage.getItem("firstVisit")){$('#myModal').modal('show');$window.localStorage.setItem("firstVisit",true);}},1000);}
 //this controller is getting the data from the backend
@@ -50737,7 +50737,6 @@ User.register({user:vm.user}).$promise.then(function(data){var user=data.user?da
 //   controller:   "BlogShowCtrl as BlogShowCtrl",
 // });
 $urlRouterProvider.otherwise("/");}
-"use strict";angular.module("graphite").controller("PostShowCtrl",PostShowCtrl);PostShowCtrl.$inject=["Post","$stateParams","$state"];function PostShowCtrl(Post,$stateParams,$state){var vm=this;Post.get($stateParams,function(data){vm.post=data.post;});vm.postDelete=function(){Post.delete($stateParams).$promise.then(function(data){$state.go("myPosts");});};}
 // angular
 //   .module("graphite")
 //   .controller("BlogsShowCtrl", BlogsShowCtrl);
@@ -50751,6 +50750,7 @@ $urlRouterProvider.otherwise("/");}
 //   });
 // }
 "use strict";
+"use strict";angular.module("graphite").controller("PostShowCtrl",PostShowCtrl);PostShowCtrl.$inject=["Post","$stateParams","$state"];function PostShowCtrl(Post,$stateParams,$state){var vm=this;Post.get($stateParams,function(data){vm.post=data.post;});vm.postDelete=function(){Post.delete($stateParams).$promise.then(function(data){$state.go("myPosts");});};}
 "use strict";angular.module("graphite").controller("usersShowCtrl",usersShowCtrl);usersShowCtrl.$inject=["User","$stateParams","$state"];function usersShowCtrl(User,$stateParams,$state){var vm=this;User.get($stateParams,function(data){vm.user=data.user;});vm.userDelete=function(){User.delete($stateParams).$promise.then(function(data){$state.go("usersShowCtrl");});};// Post.query_for_user($stateParams)
 //   .$promise
 //   .then(data => {

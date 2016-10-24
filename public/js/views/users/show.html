@@ -4,14 +4,15 @@
     <div class="media-left" >
 
       <div class="profile-picture">
-        <a ui-sref="usersShow({ id: usersShow.user._id })">
+        <!-- <a ui-sref="usersShow({ id: usersShow.user._id })">
 
           <div id="profile-row-1" class="row">
             <img id="profilePic" class="media-object" ng-src="{{ usersShowCtrl.user.image }}">
-          </a>
+          </a> -->
         </div>
 
       </div>
+      <img id="profilePic" class="media-object" ng-src="{{ usersShowCtrl.user.image }}">
       <div class="media-body">
         <h4 class="media-heading"> {{ usersShowCtrl.user.username }} </h4>
       </div>
@@ -27,7 +28,7 @@
       </ul>
 
       <li id="edit-button"><a class="btn btn-default" ui-sref="usersEdit({id: usersShowCtrl.user._id})">Edit</a></li>
-      <li id="delete-button"><a class="btn btn-default" ng-click="usersShowCtrl.userDelete()">Delete</a></li>
+      <!-- <li id="delete-button"><a class="btn btn-default" ng-click="usersShowCtrl.userDelete()">Delete</a></li> -->
     </div>
   </div>
 </div>

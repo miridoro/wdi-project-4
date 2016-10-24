@@ -1,7 +1,7 @@
 <h2>This is the FEED for ALL POSTS</h2>
 
 <ul class="container">
-  <li class="col-sm-4" ng-repeat="post in PostIndexCtrl.posts track by $index">
+  <li class="col-sm-4" ng-repeat="post in PostIndexCtrl.posts track by $index" ui-sref="postShow({ id: post._id })">
     <div>
       <div>
         <h3> {{ post.text }}</h3>
