@@ -4,7 +4,7 @@
     <div>
       <div>
         <h3> {{ post.text }}</h3>
-        <img class="placeholder" ng-src="{{ post.image }}" />
+        <img class="placeholder" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
         <div class="info">
         </div>
       </div>

@@ -7,6 +7,7 @@ function registerCtrl(User, CurrentUserService){
   //vm is controller
   const vm = this;
   vm.register = () => {
+    vm.user.follow = [];
     
     // need user key because in backend its req.body.user, so need to specify a key
     //post with key of user and value being model on the form

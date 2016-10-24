@@ -13,7 +13,7 @@ function userFactory(API, $resource) {
             isArray: false
         },
         'update':   {
-          method: "PUT"
+          method: "PUT",
         },
         'register': {
             method: "POST",

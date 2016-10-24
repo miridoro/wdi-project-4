@@ -11,8 +11,7 @@ const userSchema = new mongoose.Schema({
   email:        { type: String, unique: true, trim: true, required: true },
   location:     { type: String, trim: true },
   passwordHash: { type: String, required: true },
-  blog:         { type: mongoose.Schema.Types.ObjectId, ref: 'Blog' },
-  follow:       [{ type: mongoose.Schema.Types.ObjectId, ref: 'Blog' }]
+  follow:       [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 
 userSchema
