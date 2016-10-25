@@ -9,7 +9,8 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
 
   User.get({id: vm.loginuser.id}, data => {
     vm.user = data.user;
-    console.log(vm.user);
+    console.log("vm.user: ", vm.user);
+    console.log("vm.loginuser: ", vm.loginuser);
   });
 
   // vm.submitMessage    = submitMessage;

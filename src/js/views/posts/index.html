@@ -12,7 +12,7 @@
       <div class="imgNbutton">
         <img class="card-img-top postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
         <!-- <button type="button" ng-click="PostIndexCtrl.clickFollow(post)">Follow</button> -->
-
+        <p> User = {{ post.user.username }}  </p>
         <button class="postsFollow" ng-click="toggle = !toggle" >
           <span ng-show="toggle">Unfollow</span>
           <span ng-hide="toggle" ng-click="PostIndexCtrl.clickFollow(post)">Follow</span>

@@ -8,7 +8,7 @@ function registerCtrl(User, CurrentUserService){
   const vm = this;
   vm.register = () => {
     vm.user.follow = [];
-    
+
     // need user key because in backend its req.body.user, so need to specify a key
     //post with key of user and value being model on the form
     User
@@ -17,7 +17,10 @@ function registerCtrl(User, CurrentUserService){
       .then(data => {
         const user = data.user ? data.user : null;
         if(user) {
+          user.id = user._id;
           CurrentUserService.saveUser(user);
+
+        //  currentUser = CurrentUserService.getUser();
         }
       });
   };
