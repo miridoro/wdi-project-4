@@ -13,11 +13,11 @@ const Post     = require('../models/post');
 function postsIndex(req, res) {
   Post
   .find(
-  //   {
-  //   user: {
-  //     $ne: req.user._id
-  //   }
-  // }
+    {
+    user: {
+      $ne: req.user._id
+    }
+  }
 )
   .populate("user")
   .exec((err, posts) => {

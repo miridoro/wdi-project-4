@@ -13,6 +13,10 @@ angular
         'delete':         { method: 'DELETE' },
         'query':          { method: 'GET', isArray: false },
         'update':         { method: 'PUT' },
+        'follow':         {
+          method: 'GET',
+          url: `${API}/posts/follow/:id`,
+        },
         'query_for_user': {
           method: 'POST',
           url: `${API}/my-posts`,
