@@ -35,13 +35,66 @@ ul {
   color: white;
 }
 
-img {
+.postImage {
   width: 250px;
   height: 250px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 li {
   list-style-type: none;
+}
+
+.postButtons {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.posts {
+  margin: 20px;
+  color: #1E152A;
+  border: 2px solid #1E152A;
+}
+
+.postsFollow {
+  margin: 5px;
+  color: #1E152A;
+  border: 2px solid #1E152A;
+  float: center;
+}
+
+.imgNbutton {
+  margin: 0 auto;
+  border: 1px solid red;
+  margin: 10px;
+}
+
+.postCard {
+  margin: 10px;
+  height: 400px;
+  width: 300px;
+  border: 2px solid #1E152A;
+  border-radius: 20px;
+}
+
+.postImage {
+    border: none;
+    margin: 0 auto;
+}
+
+
+#postTitle {
+  text-align: center;
+}
+
+.editPost {
+  border: 2px solid #1E152A;
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 20px;
 }
 
 //textAngular CSS

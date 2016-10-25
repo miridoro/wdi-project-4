@@ -1,13 +1,26 @@
-<button>Favorite Posts</button> <button>All Posts</button>
+<div class="postButtons">
+  <button class="posts">Favorite Posts</button> <button class="posts">All Posts</button>
+</div>
+
+
+
 
 <ul>
   <li class="col-sm-4" ng-repeat="post in PostIndexCtrl.posts track by $index" >
-    <div>
-      <div class="card">
-        <h3> {{ post.text }}</h3>
-        <img class="card-img-top" class="placeholder" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
-        <button type="button" ng-click="PostIndexCtrl.clickFollow(post)">Follow</button>
-      </div>
+    <div class="postCard">
+        <h4 id="postTitle"> {{ post.text }}</h4>
+        <div class="imgNbutton">
+        <img class="card-img-top postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
+        <!-- <button type="button" ng-click="PostIndexCtrl.clickFollow(post)">Follow</button> -->
+
+        <button class="postsFollow" ng-click="toggle = !toggle" >
+            <span ng-show="toggle">Unfollow</span>
+            <span ng-hide="toggle" ng-click="PostIndexCtrl.clickFollow(post)">Follow</span>
+        </button>
+        </div>
+        <!-- <div class="box on" ng-show="toggle" ng-animate="'box'">Follow</div> -->
     </div>
   </li>
 </ul>
+
+</div>

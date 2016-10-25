@@ -1,11 +1,15 @@
-<h1>{{ PostShowCtrl.post.text }}</h1>
-<img ng-src="{{ PostShowCtrl.post.image }}">
+<div class="editPost">
+<h4>{{ PostShowCtrl.post.text }}</h4>
+<img class="card-img-top postImage" ng-src="{{ PostShowCtrl.post.image }}">
 
 <ul class="list-inline">
-  <li><a class="button" ui-sref="postEdit({id: post.post._id})">Edit</a></li>
-  <li><a class="button" ng-click="post.postDelete()">Delete</a></li>
+  <li><a class="button" ui-sref="postEdit({id: PostShowCtrl.post._id})">Edit</a></li>
+  <li><a class="button" ng-click="PostShowCtrl.postDelete()">Delete</a></li>
 </ul>
 
-<h3>Add Comment:</h3>
+<h4>Add Comment:</h4>
 <textarea type="text" name="name" value=""></textarea>
+<br>
 <input type="submit" value="Submit">
+
+</div>
