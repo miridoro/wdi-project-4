@@ -1,5 +1,6 @@
 module.exports = {
   index:        postsIndex,
+  follow:       postsFollow,
   indexForUser: postsIndexForUser,
   create:       postsCreate,
   show:         postsShow,
@@ -10,6 +11,22 @@ module.exports = {
 const Post     = require('../models/post');
 
 function postsIndex(req, res) {
+  Post
+  .find(
+  //   {
+  //   user: {
+  //     $ne: req.user._id
+  //   }
+  // }
+)
+  .populate("user")
+  .exec((err, posts) => {
+    if (err) return res.status(500).json({ message: "Something went wrong." });
+    return res.status(200).json({ posts });
+  });
+}
+
+function postsFollow(req, res) {
   Post
   .find(
   //   {

@@ -1,13 +1,12 @@
-<h2>This is the FEED for ALL POSTS</h2>
+<button>Favorite Posts</button> <button>All Posts</button>
 
-<ul class="container">
+<ul>
   <li class="col-sm-4" ng-repeat="post in PostIndexCtrl.posts track by $index" >
     <div>
-      <div>
+      <div class="card">
         <h3> {{ post.text }}</h3>
-        <img class="placeholder" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
+        <img class="card-img-top" class="placeholder" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
         <button type="button" ng-click="PostIndexCtrl.clickFollow(post)">Follow</button>
-        <button type="button" name="button">Comment</button>
       </div>
     </div>
   </li>

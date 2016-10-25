@@ -25,7 +25,7 @@ function userFactory(API, $resource) {
         },
         'favourite': {
           method: "POST",
-          url: `${API}/deeds/:id/favourite`, params: { id: '@_id'}
+          url: `${API}/posts/:id/favourite`, params: { id: '@_id'}
         }
 
     });

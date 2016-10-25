@@ -5,7 +5,11 @@
   <title>Graphite</title>
   <link rel="stylesheet" href="/css/style.css" charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   <script src="/js/app.js" charset="utf-8"></script>
+  <script src='../dist/textAngular-rangy.min.js'></script>
+  <script src='../dist/textAngular-sanitize.min.js'></script>
+  <script src='../dist/textAngular.min.js'></script>
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
   <base href="/" />
 </head>
@@ -40,7 +44,7 @@
               <a class='nav-text' ui-sref="postNew" ui-sref-active="active" ui-sref-opts="{reload: true}">Create Post</a>
             </li>
             <li ng-show="main.user">
-              <a class='nav-text' ui-sref="postIndex" ui-sref-active="active" ui-sref-opts="{reload: true}">Posts-Feed</a>
+              <a class='nav-text' ui-sref="postIndex" ui-sref-active="active" ui-sref-opts="{reload: true}">Posts</a>
             </li>
             <!-- <li ng-show="main.user">
               <a class='nav-text' ui-sref="requestsIndex" ui-sref-active="active" ui-sref-opts="{reload: true}">Following</a>
@@ -59,10 +63,6 @@
   <main class="container" ui-view>
   </main>
 
-<div id="left"></div>
-<div id="right"></div>
-<div id="top"></div>
-<div id="bottom"></div>
 </body>
 
 </html>

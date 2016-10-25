@@ -12,7 +12,27 @@ ul {
 
 
 .navbar-default {
-  color: cornflowerblue;
+  background-color: #1E152A;
+}
+
+//.navbar-default .navbar-brand {
+//    color: white;
+//}
+//
+//.navbar-default .navbar-nav > li > a, .navbar-default .navbar-text {
+//  color: white;
+//}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
+  color: yellow;
+}
+
+.navbar-default .navbar-nav >li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+  color: white;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+  color: white;
 }
 
 img {
@@ -22,4 +42,14 @@ img {
 
 li {
   list-style-type: none;
+}
+
+//textAngular CSS
+.ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin:20px 0;
 }
