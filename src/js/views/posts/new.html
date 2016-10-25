@@ -2,12 +2,13 @@
 
 <form class="form" ng-submit="PostNewCtrl.submit()">
   <div class="form-group">
-    <label>Post</label>
-    <input ng-model="PostNewCtrl.post.text" class="form-control">
+    <label>Title</label>
+    <input ng-model="PostNewCtrl.post.title" class="form-control">
   </div>
   <div class="form-group">
-    <label>Image</label>
+    <label>Main Image</label>
     <input ng-model="PostNewCtrl.post.image" class="form-control">
   </div>
+  <div text-angular ng-model="PostNewCtrl.post.content"></div>
   <input class="button" type="submit" value="Add" class="btn btn-primary">
 </form>

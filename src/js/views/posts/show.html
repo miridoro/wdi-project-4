@@ -1,15 +1,18 @@
 <div class="editPost">
-<h4>{{ PostShowCtrl.post.text }}</h4>
-<img class="card-img-top postImage" ng-src="{{ PostShowCtrl.post.image }}">
+  <h1>{{ PostShowCtrl.post.title }}</h1>
 
-<ul class="list-inline">
-  <li><a class="button" ui-sref="postEdit({id: PostShowCtrl.post._id})">Edit</a></li>
-  <li><a class="button" ng-click="PostShowCtrl.postDelete()">Delete</a></li>
-</ul>
+  <div ta-bind ng-model="PostShowCtrl.post.content"></div>
 
-<h4>Add Comment:</h4>
-<textarea type="text" name="name" value=""></textarea>
-<br>
-<input type="submit" value="Submit">
+  <img class="card-img-top postImage" ng-src="{{ PostShowCtrl.post.image }}">
+
+  <ul class="list-inline">
+    <li><a class="button" ui-sref="postEdit({id: PostShowCtrl.post._id})">Edit</a></li>
+    <li><a class="button" ng-click="PostShowCtrl.postDelete()">Delete</a></li>
+  </ul>
+
+  <h4>Add Comment:</h4>
+  <textarea type="text" name="name" value=""></textarea>
+  <br>
+  <input type="submit" value="Submit">
 
 </div>
