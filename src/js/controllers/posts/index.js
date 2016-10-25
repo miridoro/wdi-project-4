@@ -43,6 +43,31 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
     console.log(vm.user.follow);
   };
 
+  vm.clickUnfollow = (post) => {
+
+    console.log(post);
+    follow_set = new Set(vm.user.follow);
+    follow_set.delete(post.user._id);
+    vm.user.follow = Array.from(follow_set);
+
+  User
+      .update({id: vm.user._id }, { user: vm.user })
+      .$promise
+      .then(data => {
+      //  $state.go("postIndex", $stateParams);
+      });
+
+    console.log("clicking");
+    console.log(vm.user.follow);
+
+  Post
+    .query($stateParams)
+    .$promise
+    .then(data => {
+      vm.posts = data.posts;
+    });
+  };
+
 
   // function submitMessage(){
   //   Request.save({

@@ -12,19 +12,29 @@ const Post     = require('../models/post');
 
 function postsIndex(req, res) {
   Post
-  .find(
-    {
-    user: {
-      $ne: req.user._id
-    }
-  }
-)
+  .find({ user: { $in: req.user.follow } })
   .populate("user")
   .exec((err, posts) => {
     if (err) return res.status(500).json({ message: "Something went wrong." });
     return res.status(200).json({ posts });
   });
 }
+
+// function postsIndex(req, res) {
+//   Post
+//   .find(
+//     {
+//     user: {
+//       $ne: req.user._id
+//     }
+//   }
+// )
+//   .populate("user")
+//   .exec((err, posts) => {
+//     if (err) return res.status(500).json({ message: "Something went wrong." });
+//     return res.status(200).json({ posts });
+//   });
+// }
 
 function postsFollow(req, res) {
   Post
