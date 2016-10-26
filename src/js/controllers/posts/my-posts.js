@@ -13,5 +13,4 @@ function MyPostsCtrl(Post, CurrentUserService){
       vm.posts      = data.posts;
     });
 
-
 }

@@ -56,17 +56,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     url: "/posts/:id/edit",
     templateUrl:  "/js/views/posts/edit.html",
     controller:   "PostEditCtrl as PostEditCtrl",
-  })
-  .state("blogIndex", {
-    url: "/blogs",
-    templateUrl:  "/js/views/blogs/index.html",
-    controller:   "BlogsIndexCtrl as BlogsIndexCtrl",
   });
-  // .state("blogShow",  {
-  //   url: "/blogs/:id",
-  //   templateUrl:  "/js/views/blogs/show.html",
-  //   controller:   "BlogShowCtrl as BlogShowCtrl",
-  // });
 
   $urlRouterProvider.otherwise("/");
 }

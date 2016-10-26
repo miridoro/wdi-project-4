@@ -13,8 +13,6 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
     console.log("vm.loginuser: ", vm.loginuser);
   });
 
-  // vm.submitMessage    = submitMessage;
-
 
   Post
   .query($stateParams)
@@ -57,8 +55,7 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
       //  $state.go("postIndex", $stateParams);
       });
 
-    console.log("clicking");
-    console.log(vm.user.follow);
+    console.log("unfollow", vm.user.follow);
 
   Post
     .query($stateParams)
@@ -67,20 +64,5 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
       vm.posts = data.posts;
     });
   };
-
-
-  // function submitMessage(){
-  //   Request.save({
-  //     deed: vm.deed._id,
-  //     messages: [{
-  //       body: vm.message.body
-  //     }]
-  //   })
-  //   .$promise
-  //   .then(data => {
-  //     $('#deedModal').modal('hide');
-  //   })
-  //   .catch(console.log);
-  // }
 
 }
