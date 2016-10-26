@@ -1,6 +1,4 @@
-<h2>Create New Post:</h2>
-
-<form class="form" ng-submit="PostNewCtrl.submit()">
+<form class="textAngular" class="form" ng-submit="PostNewCtrl.submit()">
   <div class="form-group">
     <label>Title</label>
     <input ng-model="PostNewCtrl.post.title" class="form-control">
@@ -9,6 +7,8 @@
     <label>Main Image</label>
     <input ng-model="PostNewCtrl.post.image" class="form-control">
   </div>
+
   <div text-angular ng-model="PostNewCtrl.post.content"></div>
+
   <input class="button" type="submit" value="Add" class="btn btn-primary">
 </form>

@@ -1,21 +1,21 @@
 <div class="postButtons">
-  <button class="posts">Favorite Posts</button> <button class="posts" ui-sref="postIndex">All Posts</button>
+  <button ng-click="PostIndexCtrl.favourites()" class="posts">Favorite Posts</button> <button ng-click="PostIndexCtrl.all()" class="posts" >All Posts</button>
 </div>
 
 
 
 
 <ul>
-  <li class="col-sm-4" ng-repeat="post in PostIndexCtrl.posts track by $index" >
+  <li ng-repeat="post in PostIndexCtrl.posts track by $index" >
     <div class="postCard">
       <!-- <h4 id="postTitle"> {{ post.text }}</h4> -->
-      <div class="imgNbutton">
-        <img class="card-img-top postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
+        <div class="imgNbutton">
+        <img class="postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
         <!-- <button type="button" ng-click="PostIndexCtrl.clickFollow(post)">Follow</button> -->
         <p> User = {{ post.user.username }}  </p>
-        <button class="postsFollow" ng-click="toggle = !toggle" >
-          <span ng-show="toggle" ng-click="PostIndexCtrl.clickUnfollow(post)">Unfollow</span>
-          <span ng-hide="toggle" ng-click="PostIndexCtrl.clickFollow(post)">Follow {{ post.user.username }}</span>
+        <button class="postsFollow" >
+          <span ng-show="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickUnfollow(post)">Unfollow</span>
+          <span ng-hide="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickFollow(post)">Follow {{ post.user.username }}</span>
         </button>
       </div>
       <!-- <div class="box on" ng-show="toggle" ng-animate="'box'">Follow</div> -->

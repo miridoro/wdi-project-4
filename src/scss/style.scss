@@ -1,5 +1,28 @@
 @import "bower";
 
+body {
+  //font-family: 'Titillium Web', sans-serif;
+  font-family: 'Inconsolata', monospace;
+  background-color: #F0EDEE;
+}
+
+p.ng-scope {
+  //font-family: 'Titillium Web', sans-serif;
+  font-family: 'Inconsolata', monospace;
+}
+
+label {
+  font-family: 'Inconsolata', monospace;
+}
+
+button {
+  font-family: 'Inconsolata', monospace;
+}
+
+input.button {
+  font-family: 'Inconsolata', monospace;
+}
+
 ul {
   li {
     a {
@@ -10,9 +33,16 @@ ul {
   }
 }
 
+a.nav-text {
+  //font-family: 'Titillium Web', sans-serif;
+  font-family: 'Inconsolata', monospace;
+}
 
 .navbar-default {
-  background-color: #1E152A;
+  background-color: #0B4F6C;
+  opacity: 0.8;
+  //font-family: 'Titillium Web', sans-serif;
+  font-family: 'Inconsolata', monospace;
 }
 
 
@@ -20,7 +50,7 @@ ul {
   color: yellow;
 }
 
-.navbar-default .navbar-nav >li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+.navbar-default .navbar-nav > li >a:focus, .navbar-default .navbar-nav>li>a:hover {
   color: white;
 }
 
@@ -66,19 +96,32 @@ li {
 
 .imgNbutton img {
   margin: 0 auto;
+  width: 100%;
 }
+
+div.imgNbutton {
+  margin: 0 auto;
+}
+
+
 
 .postCard {
   margin: 10px;
-  height: 400px;
-  width: 300px;
+  height: 500px;
+  width: 450px;
   border: 2px solid #1E152A;
   border-radius: 20px;
+  text-align: center;
 }
 
 .postImage {
     border: none;
     margin: 0 auto;
+}
+
+.textAngular {
+  width: 70%;
+  margin: 0 auto;
 }
 
 

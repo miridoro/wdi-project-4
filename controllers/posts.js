@@ -11,6 +11,7 @@ module.exports = {
 const Post     = require('../models/post');
 
 function postsIndex(req, res) {
+
   Post
   .find({
       user: {
@@ -41,6 +42,7 @@ function postsIndex(req, res) {
 // }
 
 function postsFollow(req, res) {
+  console.log("***** posts.follow()");
   Post
   .find({ user: { $in: req.user.follow }})
   .populate("user")

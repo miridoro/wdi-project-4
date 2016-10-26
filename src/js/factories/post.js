@@ -14,8 +14,8 @@ angular
         'query':          { method: 'GET', isArray: false },
         'update':         { method: 'PUT' },
         'follow':         {
-          method: 'GET',
-          url: `${API}/posts/follow/:id`,
+          method: 'POST',
+          url: `${API}/follow`,
         },
         'query_for_user': {
           method: 'POST',

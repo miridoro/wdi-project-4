@@ -31,8 +31,8 @@ router.route("/posts/:id")
   .get(posts.show)
   .put(posts.update)
   .delete(posts.delete);
-router.route("/posts/follow/:id")
-  .get(posts.follow);
+router.route("/follow")
+  .post(posts.follow);
 
 
 router.route("/blogs")
