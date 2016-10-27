@@ -15,7 +15,7 @@ function PostShowCtrl(Post, $stateParams, $state){
       .delete($stateParams)
       .$promise
       .then(data => {
-        $state.go("myPosts");
+        $state.go("postIndex");
       });
   };
 }

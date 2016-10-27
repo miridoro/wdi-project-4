@@ -6,7 +6,7 @@ PostNewCtrl.$inject = ["Post", "$state", "CurrentUserService"];
 function PostNewCtrl(Post, $state, CurrentUserService){
   const vm          = this;
   vm.user           = CurrentUserService.getUser();
-
+  vm.post = {};
 
   // Must be wrapped in a function so that it is not invoked immediately
   // $save is an instance method
@@ -19,7 +19,8 @@ function PostNewCtrl(Post, $state, CurrentUserService){
       .save({ post: vm.post })
       .$promise
       .then(data => {
-        $state.go("myPosts");
+        console.log(data);
+        $state.go("postShow", {id: data.post._id});
       });
   };
 
