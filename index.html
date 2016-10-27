@@ -15,6 +15,9 @@
   <header>
     <nav class="navbar navbar-default">
       <div class="container">
+        <div class="content">
+
+
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -54,13 +57,14 @@
               <a class='nav-text' ng-click="main.logout()" ui-sref-active="active" ui-sref-opts="{reload: true}">logout</a>
             </li>
           </ul>
+          </div>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
   </header>
-  <main class="container" ui-view>
-  </main>
+  <main class="container" ui-view></main>
 
+  <footer class="footer"></footer>
 </body>
 
 </html>

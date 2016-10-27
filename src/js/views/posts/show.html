@@ -1,4 +1,4 @@
-<div class="editPost">
+<div class="editPost postCard">
   <h1>{{ PostShowCtrl.post.title }}</h1>
 
   <div ta-bind ng-model="PostShowCtrl.post.content"></div>
@@ -6,7 +6,7 @@
   <img class="card-img-top postImage" ng-src="{{ PostShowCtrl.post.image }}">
 
   <ul class="list-inline">
-    <li><a class="button" ui-sref="postEdit({id: PostShowCtrl.post._id})">Edit</a></li>
-    <li><a class="button" ng-click="PostShowCtrl.postDelete()">Delete</a></li>
+    <li><a class="btn btn-default" ui-sref="postEdit({id: PostShowCtrl.post._id})">Edit</a></li>
+    <li><a class="btn btn-default" ng-click="PostShowCtrl.postDelete()">Delete</a></li>
   </ul>
 </div>

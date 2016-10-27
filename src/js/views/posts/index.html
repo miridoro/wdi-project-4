@@ -4,22 +4,18 @@
 </div>
 
 
-
-
 <ul>
   <li ng-repeat="post in PostIndexCtrl.posts track by $index" >
     <div class="postCard">
       <!-- <h4 id="postTitle"> {{ post.text }}</h4> -->
         <div class="imgNbutton">
-        <img class="postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
-        <!-- <button type="button" ng-click="PostIndexCtrl.clickFollow(post)">Follow</button> -->
-        <p> User = {{ post.user.username }}  </p>
-        <button class="postsFollow" >
+          <h4 id="postTitle"> {{ post.title }} </h4>
+        <img class="postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })" />
+        <button class="postsFollow btn btn-default" >
           <span ng-show="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickUnfollow(post)">Unfollow</span>
           <span ng-hide="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickFollow(post)">Follow {{ post.user.username }}</span>
         </button>
       </div>
-      <!-- <div class="box on" ng-show="toggle" ng-animate="'box'">Follow</div> -->
     </div>
   </li>
 </ul>

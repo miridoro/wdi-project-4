@@ -1,15 +1,15 @@
-<form class="form" ng-submit="post.submit()">
+<form class="form" ng-submit="PostEditCtrl.submit()">
   <div class="form-group">
     <label>Post</label>
-    <input ng-model="deed.deed.deed" class="form-control">
+    <input ng-model="PostEditCtrl.post.title" class="form-control">
   </div>
   <div class="form-group">
     <label>Image</label>
-    <input ng-model="deed.deed.image" class="form-control">
+    <input ng-model="PostEditCtrl.post.image" class="form-control">
   </div>
   <div class="form-group">
-    <label>Location</label>
-    <textarea ng-model="deed.deed.location" class="form-control"></textarea>
+    <label>Text</label>
+    <textarea ng-model="PostEditCtrl.post.content" class="form-control"></textarea>
   </div>
   <input class="button" type="submit" value="Update" class="btn btn-primary">
 </form>
