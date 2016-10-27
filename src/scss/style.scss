@@ -5,15 +5,21 @@ body {
   background-color: #F0EDEE;
 }
 
+//body.home {
+//    background: url('https://images.unsplash.com/uploads/14131528928453585b6dc/829d24cf?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=851ed16fd973c0a946045b43cf5c49f7') no-repeat center center fixed;
+//}
+
 // sticky footer with flex-box
 html {
   height: 100%;
 }
+
 body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
+
 .content {
   flex: 1;
 }
@@ -28,6 +34,12 @@ body {
 //  margin-top: 30px;
 //}
 
+
+.form {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10%;
+}
 
 
 p.ng-scope {
@@ -61,7 +73,7 @@ a.nav-text {
 }
 
 .navbar-default {
-  background-color: #0B4F6C;
+  background-color: #6C91BF;
   opacity: 0.8;
   font-family: 'Inconsolata', monospace;
 }
@@ -107,7 +119,7 @@ li {
 
 .imgNbutton {
   margin: 0 auto;
-  border: 1px solid #1E152A;
+  //border: 1px solid #1E152A;
   margin: 10px;
   text-align: center;
   padding: 30px;
@@ -123,7 +135,8 @@ li {
   margin: 10px;
   height: 750px;
   width: 900px;
-  border: 1.5px solid #0B4F6C;
+  border: 2px solid white;
+  //box-shadow: 0px 0px 5px;
   border-radius: 20px;
   text-align: center;
   margin: 0 auto;
@@ -169,4 +182,22 @@ li {
   padding-top: 20px;
   padding-bottom: 60px;
   border-radius: 5px;
+}
+
+#homeImg {
+  width: 100vw;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -100;
+}
+
+#logoTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: yellow;
+  margin-top: 16%;
+  font-size: 4em;
 }

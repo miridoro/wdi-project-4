@@ -9,10 +9,10 @@
     <div class="postCard">
       <!-- <h4 id="postTitle"> {{ post.text }}</h4> -->
         <div class="imgNbutton">
-          <h4 id="postTitle"> {{ post.title }} </h4>
+          <h3 id="postTitle"> {{ post.title }}</h3> <p> by {{ post.user.username }} </p>
         <img class="postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })" />
         <button class="postsFollow btn btn-default" >
-          <span ng-show="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickUnfollow(post)">Unfollow</span>
+          <span ng-show="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickUnfollow(post)">Unfollow {{ post.user.username }}</span>
           <span ng-hide="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickFollow(post)">Follow {{ post.user.username }}</span>
         </button>
       </div>

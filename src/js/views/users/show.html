@@ -1,5 +1,4 @@
-<div id="profile-container" class="container">
-
+<div id="profile-container" class="container postCard">
   <div class="media">
     <div class="media-left" >
 
@@ -14,16 +13,16 @@
       </div>
       <img id="profilePic" class="media-object" ng-src="{{ usersShowCtrl.user.image }}">
       <div class="media-body">
-        <h4 class="media-heading"> {{ usersShowCtrl.user.username }} </h4>
+        <h2 class="media-heading"> {{ usersShowCtrl.user.username }} </h2>
       </div>
 
       <ul>
         <li class="profile-fields">
-          <p>first name: {{ usersShowCtrl.user.firstName }}</p>
-          <p>last name: {{ usersShowCtrl.user.lastName }}</p>
-          <p>email: {{ usersShowCtrl.user.email }}</p>
-          <p>location: {{ usersShowCtrl.user.location }}</p>
-          <p>about: {{ usersShowCtrl.user.about }}</p>
+          <h3>first name: {{ usersShowCtrl.user.firstName }}</h3>
+          <h3>last name: {{ usersShowCtrl.user.lastName }}</h3>
+          <h3>email: {{ usersShowCtrl.user.email }}</h3>
+          <h3>location: {{ usersShowCtrl.user.location }}</h3>
+          <h3>about: {{ usersShowCtrl.user.about }}</h3>
         </li>
       </ul>
 
