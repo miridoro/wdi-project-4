@@ -4,7 +4,6 @@ const router          = express.Router();
 const authentications = require("../controllers/authentications");
 const users           = require("../controllers/users");
 const posts           = require("../controllers/posts");
-const blogs           = require("../controllers/blogs");
 
 router.route("/register")
   .post(authentications.register);
@@ -19,10 +18,8 @@ router.route("/users/:id")
   .patch(users.update)
   .delete(users.delete);
 
-
 router.route("/my-posts")
   .post(posts.indexForUser);
-
 
 router.route("/posts")
   .get(posts.index)
@@ -33,16 +30,5 @@ router.route("/posts/:id")
   .delete(posts.delete);
 router.route("/follow")
   .post(posts.follow);
-
-
-router.route("/blogs")
-  .post(blogs.create)
-  .get(blogs.index);
-router.route("/blogs/:id")
-  .get(blogs.show)
-  .put(blogs.update)
-  .delete(blogs.delete);
-// router.route("/blogs/:id/reply")
-//   .put(blogs.reply);
 
 module.exports = router;

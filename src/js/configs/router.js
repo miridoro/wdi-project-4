@@ -32,11 +32,6 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     templateUrl: "/js/views/users/edit.html",
     controller: "usersEditCtrl as usersEditCtrl"
   })
-  .state("myPosts",       {
-    url: "/my-posts",
-    templateUrl:  "/js/views/posts/my-posts.html",
-    controller:   "MyPostsCtrl as MyPostsCtrl",
-  })
   .state("postIndex",     {
     url: "/posts",
     templateUrl:  "/js/views/posts/index.html",

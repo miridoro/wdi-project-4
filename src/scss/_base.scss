@@ -1,0 +1,31 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  padding-top: 50px;
+  font-family: $body-font;
+  color: $nearlyBlack;
+  background: $nearlyWhite;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $header-font;
+  color: $black;
+}
+
+a {
+  color: $yellow;
+
+  &:hover{
+    color: $black;
+  }
+}
+
+section {
+  padding: $section-padding;
+}
+
+main {
+  height: 100%;
+}

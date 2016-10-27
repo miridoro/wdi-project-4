@@ -20,7 +20,14 @@ const bower            = mainBowerFiles({
     "bootstrap": {
       "main": [
         "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
+        "dist/js/bootstrap.js",
+        "fonts/**"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css",
+        "fonts/**"
       ]
     }
   }
@@ -139,6 +146,7 @@ gulp.task("watch", () => {
   gulp.watch('./index.html', ['html']);
   gulp.watch(`${src}/**/*.html`, ['copy:views']);
   gulp.watch(`${src}/**/*.js`, ['bower', 'scripts']);
+  gulp.watch(`${src}/**/*.{png,gif,jpg,jpeg,ico}`, ['images']);
   gulp.watch(`${src}/**/*.scss`, ['sass']);
 });
 

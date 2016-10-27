@@ -1,33 +1,16 @@
-<div id="profile-container" class="container editPost profile">
-  <div class="media">
-    <div class="media-left" >
+<section class="container profile">
+  <h1>{{ usersShowCtrl.user.username }}</h1>
+  <h4>{{ usersShowCtrl.user.firstName }} {{ usersShowCtrl.user.lastName }}</h3>
+  <p>
+    {{ usersShowCtrl.user.about }}
+  </p>
+  <a class="btn btn-default list-inline" ui-sref="usersEdit({id: usersShowCtrl.user._id})">Edit</a>
+</section>
 
-      <div class="profile-picture">
-        <!-- <a ui-sref="usersShow({ id: usersShow.user._id })">
-
-          <div id="profile-row-1" class="row">
-            <img id="profilePic" class="media-object" ng-src="{{ usersShowCtrl.user.image }}">
-          </a> -->
-        </div>
-
-      </div>
-      <img id="profilePic" class="media-object" ng-src="{{ usersShowCtrl.user.image }}">
-      <div class="media-body">
-        <h2 class="media-heading"> {{ usersShowCtrl.user.username }} </h2>
-      </div>
-
-      <ul>
-        <li class="profile-fields">
-          <h3>first name: {{ usersShowCtrl.user.firstName }}</h3>
-          <h3>last name:  {{ usersShowCtrl.user.lastName }}</h3>
-          <h3>email:      {{ usersShowCtrl.user.email }}</h3>
-          <h3>location:   {{ usersShowCtrl.user.location }}</h3>
-          <h3>about:      {{ usersShowCtrl.user.about }}</h3>
-        </li>
-      </ul>
-
-      <li id="edit-button"><a class="btn btn-default list-inline" ui-sref="usersEdit({id: usersShowCtrl.user._id})">Edit</a></li>
-      <!-- <li id="delete-button"><a class="btn btn-default" ng-click="usersShowCtrl.userDelete()">Delete</a></li> -->
-    </div>
+<div class="jumbotron" style="background-image: url('{{ post.image }}')" ng-repeat="post in usersShowCtrl.posts track by $index">
+  <div class="container">
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.about }}</p>
+    <p><a ui-sref="postShow({ id: post._id })" class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
   </div>
 </div>

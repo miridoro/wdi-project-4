@@ -25,24 +25,7 @@ function postsIndex(req, res) {
   });
 }
 
-// function postsIndex(req, res) {
-//   Post
-//   .find(
-//     {
-//     user: {
-//       $ne: req.user._id
-//     }
-//   }
-// )
-//   .populate("user")
-//   .exec((err, posts) => {
-//     if (err) return res.status(500).json({ message: "Something went wrong." });
-//     return res.status(200).json({ posts });
-//   });
-// }
-
 function postsFollow(req, res) {
-  console.log("***** posts.follow()");
   Post
   .find({ user: { $in: req.user.follow }})
   .populate("user")
@@ -54,7 +37,7 @@ function postsFollow(req, res) {
 
 function postsIndexForUser(req, res) {
   Post.find({
-    user: req.user
+    user: req.body.user
   })
   .populate("user")
   .exec((err, posts) => {
@@ -80,7 +63,9 @@ function postsCreate(req, res) {
 
 function postsShow(req, res) {
   Post
-  .findById(req.params.id, (err, post) => {
+  .findById(req.params.id)
+  .populate("user")
+  .exec((err, post) => {
     if (err)   return res.status(500).json({ message: "Something went wrong." });
     if (!post) return res.status(404).json({ message: "Post not found." });
     return res.status(200).json({ post });

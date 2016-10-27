@@ -2,16 +2,19 @@ angular
   .module("graphite")
   .controller("usersShowCtrl", usersShowCtrl);
 
-usersShowCtrl.$inject = ["User", "$stateParams", "$state"];
-function usersShowCtrl(User, $stateParams, $state){
+usersShowCtrl.$inject = ["User", "$stateParams", "$state", "Post"];
+function usersShowCtrl(User, $stateParams, $state, Post){
   const vm   = this;
-
 
   User.get($stateParams, data => {
     vm.user = data.user;
+
+    Post.query_for_user({user: vm.user})
+      .$promise
+      .then(data => {
+        vm.posts = data.posts;
+      });
   });
-
-
 
   vm.userDelete = () => {
     User
@@ -21,11 +24,4 @@ function usersShowCtrl(User, $stateParams, $state){
         $state.go("usersShowCtrl");
       });
   };
-
-  // Post.query_for_user($stateParams)
-  //   .$promise
-  //   .then(data => {
-  //     vm.posts = data.posts;
-  //   })
-  //   .catch(console.log);
 }

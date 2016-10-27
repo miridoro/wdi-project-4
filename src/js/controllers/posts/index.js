@@ -6,7 +6,7 @@ PostIndexCtrl.$inject = ["Post", "User", "$stateParams", "CurrentUserService"];
 function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
   const vm            = this;
   vm.loginuser        = CurrentUserService.getUser();
-  vm.feedsmode        = "allposts";
+  vm.feedsmode        = "all";
 
   User.get({id: vm.loginuser.id}, data => {
     vm.user = data.user;
@@ -14,20 +14,19 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
 
   // this gets all posts excluding the users own posts
 
-    Post.query($stateParams)
-    .$promise
-    .then(data => {
-      vm.allPosts = data.posts;
-      vm.posts    = [];
-    });
-
+  Post.query($stateParams)
+  .$promise
+  .then(data => {
+    vm.allPosts  = data.posts;
+    vm.posts     = vm.allPosts;
+  });
 
   vm.isFollowed = (post) => {
     return (vm.user.follow.indexOf(post.user._id) !== -1);
   };
 
   vm.all = () => {
-    vm.feedsmode = "allposts";
+    vm.feedsmode = "all";
     vm.posts = vm.allPosts;
   };
 
@@ -46,21 +45,14 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
       console.log("got favourites");
       vm.posts    = data.posts;
     });
-
-    // vm.posts = vm.posts.filter(post => {
-    //   return vm.isFollowed(post);
-    // });
   };
-
-
-
 
   vm.clickFollow = (post) => {
     vm.feedsmode = 2;
     if (vm.user.follow === undefined) {
       vm.user.follow = [];
     }
-    console.log(post);
+
     follow_set = new Set(vm.user.follow);
     follow_set.add(post.user._id);
     vm.user.follow = Array.from(follow_set);
@@ -72,17 +64,9 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
     .then(data => {
       //  $state.go("postIndex", $stateParams);
     });
-
-    console.log("clicking");
-    console.log(vm.user.follow);
   };
 
-
-
-
   vm.clickUnfollow = (post) => {
-
-    console.log(post);
     follow_set = new Set(vm.user.follow);
     follow_set.delete(post.user._id);
     vm.user.follow = Array.from(follow_set);
@@ -91,13 +75,8 @@ function PostIndexCtrl(Post, User, $stateParams, CurrentUserService){
     .$promise
     .then(data => {
       //  $state.go("postIndex", $stateParams);
-
-        vm.update_favourites();
+      vm.update_favourites();
     });
-
-    console.log("unfollow", vm.user.follow);
-
-
   };
 
 }

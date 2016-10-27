@@ -1,0 +1,20 @@
+.btn {
+  border-radius: 0;
+  font-family: $button-font;
+  font-size: 18px;
+}
+
+.btn-primary {
+  background: $white;
+  color: $black;
+
+  &:hover {
+    background: $yellow;
+    color: $black;
+  }
+}
+
+.filter-buttons {
+  text-align: center;
+  margin: 2.5rem auto;
+}

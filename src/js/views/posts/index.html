@@ -1,23 +1,20 @@
-<div class="postButtons">
-  <button class="btn btn-default" ng-click="PostIndexCtrl.favourites()" class="posts">Favorite Posts</button>
-  <button class="btn btn-default" ng-click="PostIndexCtrl.all()" class="posts" >All Posts</button>
+<div class="filter-buttons">
+  <div class="btn-group button-group-lg" role="group">
+    <button class="btn btn-default" ng-click="PostIndexCtrl.all()" data-ng-disabled="PostIndexCtrl.feedsmode === 'all'">All Posts</button>
+    <button type="button" class="btn btn-default" ng-click="PostIndexCtrl.favourites()" data-ng-disabled="PostIndexCtrl.feedsmode === 'favourites'">Favorite Posts</button>
+  </div>
 </div>
 
-
-<ul>
-  <li ng-repeat="post in PostIndexCtrl.posts track by $index" >
-    <div class="postCard">
-      <!-- <h4 id="postTitle"> {{ post.text }}</h4> -->
-        <div class="imgNbutton">
-          <h3 id="postTitle"> {{ post.title }}</h3> <p> by {{ post.user.username }} </p>
-        <img class="postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })" />
-        <button class="postsFollow btn btn-default" >
-          <span ng-show="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickUnfollow(post)">Unfollow {{ post.user.username }}</span>
-          <span ng-hide="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickFollow(post)">Follow {{ post.user.username }}</span>
-        </button>
-      </div>
+<div class="jumbotron" style="background-image: url('{{ post.image }}')" ng-repeat="post in PostIndexCtrl.posts track by $index">
+  <div class="container">
+    <h1>{{ post.title }}</h1>
+    <p>by <a ui-sref="usersShowCtrl({id: post.user._id})">{{ post.user.username }}</a></p>
+    <div class="btn-group button-group-lg" role="group">
+      <button class="btn btn-default" >
+        <span ng-show="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickUnfollow(post)">Unfollow</span>
+        <span ng-hide="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickFollow(post)">Follow</span>
+      </button>
+      <button class="btn btn-default" ui-sref="postShow({ id: post._id })">Read</button>
     </div>
-  </li>
-</ul>
-
+  </div>
 </div>
