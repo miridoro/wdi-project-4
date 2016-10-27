@@ -1,11 +1,11 @@
 <h3>Posts by User</h3>
 <ul>
-  <li class="col-sm-4" ng-repeat="post in MyPostsCtrl.posts track by $index">
+  <li ng-repeat="post in MyPostsCtrl.posts track by $index">
     <div class="postCard">
       <div>
         <h4 id="postTitle"> {{ post.text }}</h4>
         <div class="imgNbutton">
-        <img class="card-img-top postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
+        <img class="postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })"/>
       </div>
       </div>
     </div>
