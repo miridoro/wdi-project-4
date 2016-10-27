@@ -73,14 +73,14 @@ a.nav-text {
 }
 
 .navbar-default {
-  background-color: #6C91BF;
+  background-color: #3487AA;
   opacity: 0.8;
   font-family: 'Inconsolata', monospace;
 }
 
 
 .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
-  color: yellow;
+  color: #FCFF4B;
 }
 
 .navbar-default .navbar-nav > li >a:focus, .navbar-default .navbar-nav>li>a:hover {
@@ -92,10 +92,11 @@ a.nav-text {
 }
 
 .postImage {
-  width: 250px;
-  height: 250px;
+  width: 350px;
+  height: 300px;
   margin: 0 auto;
   text-align: center;
+  margin: 20px;
 }
 
 li {
@@ -143,6 +144,8 @@ li {
   margin-bottom: 20px;
 }
 
+
+
 .textAngular {
   width: 70%;
   margin: 0 auto;
@@ -153,13 +156,14 @@ li {
   text-align: center;
 }
 
-//.editPost {
-//  border: 2px solid #1E152A;
-//  width: 300px;
-//  height: auto;
-//  margin: 0 auto;
-//  border-radius: 20px;
-//}
+.editPost {
+  //border: 2px solid #1E152A;
+  //width: 300px;
+  //height: auto;
+  //margin: 0 auto;
+  //border-radius: 20px;
+  margin-top: 50px;
+}
 
 //textAngular CSS
 .ta-editor {
@@ -197,7 +201,22 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: yellow;
+  color: #FCFF4B;
   margin-top: 16%;
   font-size: 4em;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.list-inline {
+  margin: 40px;
+}
+
+.contentBox {
+  margin: 30px;
+}
+
+.profile {
+  text-align: center;
+  //margin: 0 auto;
+  margin-top: 10%;
 }

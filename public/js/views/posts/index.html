@@ -1,0 +1,23 @@
+<div class="postButtons">
+  <button class="btn btn-default" ng-click="PostIndexCtrl.favourites()" class="posts">Favorite Posts</button>
+  <button class="btn btn-default" ng-click="PostIndexCtrl.all()" class="posts" >All Posts</button>
+</div>
+
+
+<ul>
+  <li ng-repeat="post in PostIndexCtrl.posts track by $index" >
+    <div class="postCard">
+      <!-- <h4 id="postTitle"> {{ post.text }}</h4> -->
+        <div class="imgNbutton">
+          <h3 id="postTitle"> {{ post.title }}</h3> <p> by {{ post.user.username }} </p>
+        <img class="postImage" ng-src="{{ post.image }}" ui-sref="postShow({ id: post._id })" />
+        <button class="postsFollow btn btn-default" >
+          <span ng-show="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickUnfollow(post)">Unfollow {{ post.user.username }}</span>
+          <span ng-hide="PostIndexCtrl.isFollowed(post)" ng-click="PostIndexCtrl.clickFollow(post)">Follow {{ post.user.username }}</span>
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>
+
+</div>
