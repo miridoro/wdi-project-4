@@ -35,7 +35,7 @@ const User = require("./models/user");
 const jwt  = require("jsonwebtoken");
 
 function assignUser(req, res, next){
-  var token = getToken(req, res);
+  let token = getToken(req, res);
   if (!token) return next();
   const payload = jwt.verify(token, config.secret);
   User.findById(payload.id, (err, user) => {
