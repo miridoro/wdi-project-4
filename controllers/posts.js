@@ -8,7 +8,8 @@ module.exports = {
   delete:       postsDelete
 };
 
-const Post     = require('../models/post');
+// const Post     = require('../models/post');
+var Post     = require('../models/post');
 
 function postsIndex(req, res) {
 
@@ -50,7 +51,7 @@ function postsIndexForUser(req, res) {
 }
 
 function postsCreate(req, res) {
-  let post    = new Post(req.body.post);
+  var post    = new Post(req.body.post);
   // post.user   = req.user;
   post.save((err, post) => {
     if (err) {
