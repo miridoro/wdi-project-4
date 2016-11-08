@@ -64671,28 +64671,12 @@ var currentUser=TokenService.decodeToken();return{user:currentUser,saveUser:func
 "use strict";angular.module("graphite").controller("PostEditCtrl",PostEditCtrl);PostEditCtrl.$inject=["Post","$stateParams","$state"];function PostEditCtrl(Post,$stateParams,$state){var vm=this;Post.get($stateParams,function(data){vm.post=data.post;});vm.submit=function(){console.log("vm.post",vm.post);Post.update($stateParams,{post:vm.post}).$promise.then(function(data){$state.go("postShow",$stateParams);});};}
 "use strict";angular.module("graphite").controller("usersEditCtrl",usersEditCtrl);usersEditCtrl.$inject=["User","$stateParams","$state"];function usersEditCtrl(User,$stateParams,$state){var vm=this;User.get($stateParams,function(data){vm.user=data.user;console.log("vm.user",vm.user);});vm.submit=function(){console.log("submit edit");console.log($stateParams);User.update($stateParams,{user:vm.user}).$promise.then(function(data){$state.go("usersShowCtrl",$stateParams);});};}
 "use strict";angular.module("graphite").controller("homeCtrl",homeCtrl);homeCtrl.$inject=["$window","CurrentUserService"];function homeCtrl($window,CurrentUserService){setTimeout(function(){if(CurrentUserService.getUser()&&!$window.localStorage.getItem("firstVisit")){$('#myModal').modal('show');$window.localStorage.setItem("firstVisit",true);}},1000);}
-"use strict";angular.module("graphite").controller("BlogsIndexCtrl",BlogsIndexCtrl);BlogsIndexCtrl.$inject=["Blog","$stateParams","$state"];function BlogsIndexCtrl(Blog,$stateParams,$state){var vm=this;Blog.query(function(data){vm.blogs=data.blogs;vm.blogs=data.blogs;});}
-//this controller is getting the data from the backend
-// angular
-//   .module("graphite")
-//   .controller("usersIndexCtrl", usersIndexCtrl);
-//
-// usersIndexCtrl.$inject = ["User"];
-// function usersIndexCtrl(User){
-//   const vm   = this;
-//   User.query(data => {
-//     vm.users = data.users;
-//   });
-// }
-"use strict";
-"use strict";angular.module("graphite").controller("PostIndexCtrl",PostIndexCtrl);PostIndexCtrl.$inject=["Post","User","$stateParams","CurrentUserService"];function PostIndexCtrl(Post,User,$stateParams,CurrentUserService){var vm=this;vm.loginuser=CurrentUserService.getUser();vm.feedsmode="allposts";User.get({id:vm.loginuser.id},function(data){vm.user=data.user;});// this gets all posts excluding the users own posts
-Post.query($stateParams).$promise.then(function(data){vm.allPosts=data.posts;vm.posts=[];});vm.isFollowed=function(post){return vm.user.follow.indexOf(post.user._id)!==-1;};vm.all=function(){vm.feedsmode="allposts";vm.posts=vm.allPosts;};vm.favourites=function(){vm.feedsmode="favourites";vm.update_favourites();};vm.update_favourites=function(){if(vm.feedsmode!=="favourites")return;Post.follow({},{user:vm.user}).$promise.then(function(data){console.log("got favourites");vm.posts=data.posts;});// vm.posts = vm.posts.filter(post => {
-//   return vm.isFollowed(post);
-// });
-};vm.clickFollow=function(post){vm.feedsmode=2;if(vm.user.follow===undefined){vm.user.follow=[];}console.log(post);follow_set=new Set(vm.user.follow);follow_set.add(post.user._id);vm.user.follow=Array.from(follow_set);//user follow array gets updated
+"use strict";angular.module("graphite").controller("PostIndexCtrl",PostIndexCtrl);PostIndexCtrl.$inject=["Post","User","$stateParams","CurrentUserService"];function PostIndexCtrl(Post,User,$stateParams,CurrentUserService){var vm=this;vm.loginuser=CurrentUserService.getUser();vm.feedsmode="all";User.get({id:vm.loginuser.id},function(data){vm.user=data.user;});// this gets all posts excluding the users own posts
+Post.query($stateParams).$promise.then(function(data){vm.allPosts=data.posts;vm.posts=vm.allPosts;});vm.isFollowed=function(post){return vm.user.follow.indexOf(post.user._id)!==-1;};vm.all=function(){vm.feedsmode="all";vm.posts=vm.allPosts;};vm.favourites=function(){vm.feedsmode="favourites";vm.update_favourites();};vm.update_favourites=function(){if(vm.feedsmode!=="favourites")return;Post.follow({},{user:vm.user}).$promise.then(function(data){console.log("got favourites");vm.posts=data.posts;});};vm.clickFollow=function(post){vm.feedsmode=2;if(vm.user.follow===undefined){vm.user.follow=[];}follow_set=new Set(vm.user.follow);follow_set.add(post.user._id);vm.user.follow=Array.from(follow_set);//user follow array gets updated
 User.update({id:vm.user._id},{user:vm.user}).$promise.then(function(data){//  $state.go("postIndex", $stateParams);
-});console.log("clicking");console.log(vm.user.follow);};vm.clickUnfollow=function(post){console.log(post);follow_set=new Set(vm.user.follow);follow_set.delete(post.user._id);vm.user.follow=Array.from(follow_set);User.update({id:vm.user._id},{user:vm.user}).$promise.then(function(data){//  $state.go("postIndex", $stateParams);
-vm.update_favourites();});console.log("unfollow",vm.user.follow);};}
+});};vm.clickUnfollow=function(post){follow_set=new Set(vm.user.follow);follow_set.delete(post.user._id);vm.user.follow=Array.from(follow_set);User.update({id:vm.user._id},{user:vm.user}).$promise.then(function(data){//  $state.go("postIndex", $stateParams);
+vm.update_favourites();});};}
+"use strict";angular.module("graphite").controller("BlogsIndexCtrl",BlogsIndexCtrl);BlogsIndexCtrl.$inject=["Blog","$stateParams","$state"];function BlogsIndexCtrl(Blog,$stateParams,$state){var vm=this;Blog.query(function(data){vm.blogs=data.blogs;vm.blogs=data.blogs;});}
 "use strict";//do this because we want to affect the httpProvider
 angular.module("graphite")//config has to be used because it is loaded right at the start
 .config(setUpInterceptor);setUpInterceptor.$inject=["$httpProvider"];function setUpInterceptor($httpProvider){return $httpProvider.interceptors.push("AuthInterceptor");}
@@ -64702,18 +64686,17 @@ vm.login=function(){//pass the whole user in
 //user is built from html form
 User.login(vm.user).$promise.then(function(data){var user=data.user?data.user:null;if(user){user.id=user._id;CurrentUserService.saveUser(user);}console.log("login controller",data);});};}
 "use strict";angular.module("graphite").controller("mainCtrl",mainCtrl);mainCtrl.$inject=["$rootScope","CurrentUserService","$state","$stateParams"];function mainCtrl($rootScope,CurrentUserService,$state,$stateParams){var vm=this;vm.user=CurrentUserService.getUser();vm.logout=function(){event.preventDefault();CurrentUserService.clearUser();};$rootScope.$on("loggedIn",function(){vm.user=CurrentUserService.getUser();$state.go("home");});vm.selected=function(){$on.addClass('active');};$rootScope.$on("loggedOut",function(){vm.user=null;$state.go("home");});}
-"use strict";angular.module("graphite").controller("MyPostsCtrl",MyPostsCtrl);MyPostsCtrl.$inject=["Post","CurrentUserService"];function MyPostsCtrl(Post,CurrentUserService){var vm=this;vm.user=CurrentUserService.getUser();Post.query_for_user({user:vm.user}).$promise.then(function(data){vm.posts=data.posts;});}
-"use strict";angular.module("graphite").controller("PostNewCtrl",PostNewCtrl);PostNewCtrl.$inject=["Post","$state","CurrentUserService"];function PostNewCtrl(Post,$state,CurrentUserService){var vm=this;vm.user=CurrentUserService.getUser();// Must be wrapped in a function so that it is not invoked immediately
+"use strict";angular.module("graphite").controller("PostNewCtrl",PostNewCtrl);PostNewCtrl.$inject=["Post","$state","CurrentUserService"];function PostNewCtrl(Post,$state,CurrentUserService){var vm=this;vm.user=CurrentUserService.getUser();vm.post={};// Must be wrapped in a function so that it is not invoked immediately
 // $save is an instance method
 vm.submit=function(){console.log("submitting NEW POST");// assigning a value to the user associated to that post
-vm.post.user=vm.user.id;console.log("PostNewCtrl.post",vm.post);Post.save({post:vm.post}).$promise.then(function(data){$state.go("myPosts");});};}
+vm.post.user=vm.user.id;console.log("PostNewCtrl.post",vm.post);Post.save({post:vm.post}).$promise.then(function(data){console.log(data);$state.go("postShow",{id:data.post._id});});};}
 "use strict";angular.module("graphite").factory("Post",postFactory);postFactory.$inject=["$resource","API"];function postFactory($resource,API){return $resource(API+"/posts/:id",{id:'@_id'},{'get':{method:'GET'},'save':{method:'POST'},'remove':{method:'DELETE'},'delete':{method:'DELETE'},'query':{method:'GET',isArray:false},'update':{method:'PUT'},'follow':{method:'POST',url:API+"/follow"},'query_for_user':{method:'POST',url:API+"/my-posts"}});}
 "use strict";angular.module("graphite").controller("registerCtrl",registerCtrl);registerCtrl.$inject=["User","CurrentUserService"];function registerCtrl(User,CurrentUserService){//vm is controller
 var vm=this;vm.register=function(){vm.user.follow=[];// need user key because in backend its req.body.user, so need to specify a key
 //post with key of user and value being model on the form
 User.register({user:vm.user}).$promise.then(function(data){var user=data.user?data.user:null;if(user){user.id=user._id;CurrentUserService.saveUser(user);//  currentUser = CurrentUserService.getUser();
 }});};}
-"use strict";angular.module("graphite").config(Router);Router.$inject=["$stateProvider","$locationProvider","$urlRouterProvider"];function Router($stateProvider,$locationProvider,$urlRouterProvider){$locationProvider.html5Mode(true);$stateProvider.state("home",{url:"/",templateUrl:"/js/views/home.html",controller:"homeCtrl as home"}).state("register",{url:"/register",templateUrl:"/js/views/register.html",controller:"registerCtrl as register"}).state("login",{url:"/login",templateUrl:"/js/views/login.html",controller:"loginCtrl as login"}).state("usersShowCtrl",{url:"/users/:id",templateUrl:"/js/views/users/show.html",controller:"usersShowCtrl as usersShowCtrl"}).state('usersEdit',{url:"/users/:id/edit",templateUrl:"/js/views/users/edit.html",controller:"usersEditCtrl as usersEditCtrl"}).state("myPosts",{url:"/my-posts",templateUrl:"/js/views/posts/my-posts.html",controller:"MyPostsCtrl as MyPostsCtrl"}).state("postIndex",{url:"/posts",templateUrl:"/js/views/posts/index.html",controller:"PostIndexCtrl as PostIndexCtrl"}).state("postNew",{url:"/posts/new/",templateUrl:"/js/views/posts/new.html",controller:"PostNewCtrl as PostNewCtrl"}).state("postShow",{url:"/posts/:id",templateUrl:"/js/views/posts/show.html",controller:"PostShowCtrl as PostShowCtrl"}).state("postEdit",{url:"/posts/:id/edit",templateUrl:"/js/views/posts/edit.html",controller:"PostEditCtrl as PostEditCtrl"});$urlRouterProvider.otherwise("/");}
+"use strict";angular.module("graphite").config(Router);Router.$inject=["$stateProvider","$locationProvider","$urlRouterProvider"];function Router($stateProvider,$locationProvider,$urlRouterProvider){$locationProvider.html5Mode(true);$stateProvider.state("home",{url:"/",templateUrl:"/js/views/home.html",controller:"homeCtrl as home"}).state("register",{url:"/register",templateUrl:"/js/views/register.html",controller:"registerCtrl as register"}).state("login",{url:"/login",templateUrl:"/js/views/login.html",controller:"loginCtrl as login"}).state("usersShowCtrl",{url:"/users/:id",templateUrl:"/js/views/users/show.html",controller:"usersShowCtrl as usersShowCtrl"}).state('usersEdit',{url:"/users/:id/edit",templateUrl:"/js/views/users/edit.html",controller:"usersEditCtrl as usersEditCtrl"}).state("postIndex",{url:"/posts",templateUrl:"/js/views/posts/index.html",controller:"PostIndexCtrl as PostIndexCtrl"}).state("postNew",{url:"/posts/new/",templateUrl:"/js/views/posts/new.html",controller:"PostNewCtrl as PostNewCtrl"}).state("postShow",{url:"/posts/:id",templateUrl:"/js/views/posts/show.html",controller:"PostShowCtrl as PostShowCtrl"}).state("postEdit",{url:"/posts/:id/edit",templateUrl:"/js/views/posts/edit.html",controller:"PostEditCtrl as PostEditCtrl"});$urlRouterProvider.otherwise("/");}
 // angular
 //   .module("graphite")
 //   .controller("BlogsShowCtrl", BlogsShowCtrl);
@@ -64727,14 +64710,8 @@ User.register({user:vm.user}).$promise.then(function(data){var user=data.user?da
 //   });
 // }
 "use strict";
-"use strict";angular.module("graphite").controller("PostShowCtrl",PostShowCtrl);PostShowCtrl.$inject=["Post","$stateParams","$state"];function PostShowCtrl(Post,$stateParams,$state){var vm=this;Post.get($stateParams,function(data){vm.post=data.post;});vm.postDelete=function(){Post.delete($stateParams).$promise.then(function(data){$state.go("myPosts");});};}
-"use strict";angular.module("graphite").controller("usersShowCtrl",usersShowCtrl);usersShowCtrl.$inject=["User","$stateParams","$state"];function usersShowCtrl(User,$stateParams,$state){var vm=this;User.get($stateParams,function(data){vm.user=data.user;});vm.userDelete=function(){User.delete($stateParams).$promise.then(function(data){$state.go("usersShowCtrl");});};// Post.query_for_user($stateParams)
-//   .$promise
-//   .then(data => {
-//     vm.posts = data.posts;
-//   })
-//   .catch(console.log);
-}
+"use strict";angular.module("graphite").controller("PostShowCtrl",PostShowCtrl);PostShowCtrl.$inject=["Post","$stateParams","$state"];function PostShowCtrl(Post,$stateParams,$state){var vm=this;Post.get($stateParams,function(data){vm.post=data.post;});vm.postDelete=function(){Post.delete($stateParams).$promise.then(function(data){$state.go("postIndex");});};}
+"use strict";angular.module("graphite").controller("usersShowCtrl",usersShowCtrl);usersShowCtrl.$inject=["User","$stateParams","$state","Post"];function usersShowCtrl(User,$stateParams,$state,Post){var vm=this;User.get($stateParams,function(data){vm.user=data.user;Post.query_for_user({user:vm.user}).$promise.then(function(data){vm.posts=data.posts;});});vm.userDelete=function(){User.delete($stateParams).$promise.then(function(data){$state.go("usersShowCtrl");});};}
 "use strict";angular.module("graphite").service("TokenService",TokenService);//service is like an actual constructor function
 //when injected it's newed, instantiated as new
 TokenService.$inject=["$window","jwtHelper"];function TokenService($window,jwtHelper){var self=this;self.setToken=setToken;self.getToken=getToken;self.decodeToken=decodeToken;self.clearToken=clearToken;function setToken(token){return $window.localStorage.setItem("auth-token",token);}function getToken(){return $window.localStorage.getItem("auth-token");}function decodeToken(){var token=self.getToken();return token?jwtHelper.decodeToken(token):null;}function clearToken(){return $window.localStorage.removeItem("auth-token");}}

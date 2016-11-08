@@ -1,12 +1,13 @@
-<div class="editPost postCard">
-  <h1>{{ PostShowCtrl.post.title }}</h1>
-
-  <img class="postImage showImg" ng-src="{{ PostShowCtrl.post.image }}">
-
-  <div class="contentBox" ta-bind ng-model="PostShowCtrl.post.content"></div>
-
-  <ul class="list-inline">
-    <li><a class="btn btn-default" ui-sref="postEdit({id: PostShowCtrl.post._id})">Edit</a></li>
-    <li><a class="btn btn-default" ng-click="PostShowCtrl.postDelete()">Delete</a></li>
-  </ul>
+<div class="jumbotron blog-page" style="background-image: url('{{ PostShowCtrl.post.image }}')">
+  <div class="container">
+    <h1>{{ PostShowCtrl.post.title }}</h1>
+    <p>by <a ui-sref="usersShowCtrl({id: PostShowCtrl.post.user._id})">{{ PostShowCtrl.post.user.username }}</a></p>
+  </div>
 </div>
+<section class="container blog-page">
+  <div class="contentBox" ta-bind ng-model="PostShowCtrl.post.content"></div>
+  <div class="btn-group button-group-lg" role="group">
+    <button class="btn btn-default" ui-sref="postEdit({id: PostShowCtrl.post._id})">Edit</button>
+    <button type="button" class="btn btn-default" ng-click="PostShowCtrl.postDelete()">Delete</button>
+  </div>
+</section>
