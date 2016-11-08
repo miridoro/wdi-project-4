@@ -77,6 +77,14 @@ gulp.task('sass', () => {
     .pipe(livereload());
 });
 
+gulp.task("es6", () => {
+	return gulp.src(`${src}/**/*.js`)
+		.pipe(babel({
+			presets: ["es2015"]
+		}))
+		.pipe(gulp.dest(dist));
+});
+
 // scripts & es6
 gulp.task("scripts", () => {
   return gulp.src(`${src}/**/*.js`)
