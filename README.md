@@ -6,6 +6,8 @@ This is my fourth project from my WDI-course at General Assembly in London.
 
 ![alt text](/Users/Miriam/development/project-4/wdi_project_4/graphite.png "Graphite Blogs Frontpage")
 
+graphite.png
+
 #####[Try out the app here!](https://graphiteblogs.herokuapp.com/)
 
 
